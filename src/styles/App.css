@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+
+}
+.bg-menu-drawer {
+    @apply transform transition-transform duration-500; /* Transisi halus */
+    transform-origin: top center; /* Titik asal transformasi di atas tengah */
+}
+
+.bg-menu-drawer.menu-closed {
+    @apply scale-y-0; /* Tersembunyi dengan skala 0 */
+}
+
+.bg-menu-drawer.menu-open {
+    @apply scale-y-100; /* Tampil dengan skala penuh */
+    transform-origin: bottom center; /* Ubah titik asal menjadi bawah tengah saat terbuka */
+}
