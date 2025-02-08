@@ -1,18 +1,56 @@
 @import "tailwindcss";
 
 @theme {
+    --font-title: "Liter", "sans-serif"; 
+    --font-body: "Mulish", "sans-serif";
+    --color-title: #FFF;
+    --color-body: #FFF;
+  }
+@layer base{
+    h1,h2,h3,h4,h5,h6{
+        @apply font-title;
+    }
+    h1{
+        @apply text-[120px] font-bold font-title;
+    }
+    h2{
+        @apply text-[120px] font-bold ;
+    }
+    p{
+        @apply text-[20px] font-body;
+        color: var(--color-body);
+    }
+}
+@layer components{
+    .hero-title{
+        @apply text-[120px] font-bold font-title tracking-tight;
+    }
+}
+@layer utilities{
+    .hero-title{
+        color:var(--color-title)
+    }
+    header a{
+        color:var(--color-body);
 
+    }
+    .spin-ornament{
+        animation: spin 9s linear infinite;
+    }
+    .opening-header-title{
+        @apply text-[120px] font-bold font-title;
+    }
 }
 .bg-menu-drawer {
-    @apply transform transition-transform duration-500; /* Transisi halus */
-    transform-origin: top center; /* Titik asal transformasi di atas tengah */
+    @apply transform transition-transform duration-500; 
+    transform-origin: top center; 
 }
 
 .bg-menu-drawer.menu-closed {
-    @apply scale-y-0; /* Tersembunyi dengan skala 0 */
+    @apply scale-y-0; 
 }
 
 .bg-menu-drawer.menu-open {
-    @apply scale-y-100; /* Tampil dengan skala penuh */
-    transform-origin: bottom center; /* Ubah titik asal menjadi bawah tengah saat terbuka */
+    @apply scale-y-100;
+    transform-origin: bottom center; 
 }

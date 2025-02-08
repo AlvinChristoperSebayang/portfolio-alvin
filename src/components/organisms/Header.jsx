@@ -8,10 +8,10 @@ const header = () => {
     return (
         <>
             <header className="fixed top-0 w-full z-50 ">
-                <nav className='flex justify-between items-center h-16 bg-transparent text-black py-10 container mx-auto border-b border-b-gray-200' role='navigation'>
+                <nav className='flex justify-between items-center h-16 bg-transparent text-black py-10 container mx-auto border-b border-white' role='navigation'>
                     <ul>
                         <li>
-                            <a href="" className='text-white'>Alvin Christ</a>
+                            <a href="" className=''>Alvin Christ</a>
                         </li>
                     </ul>
                     <ul>
@@ -31,7 +31,7 @@ const header = () => {
             <div className={`menu-drawer fixed top-0 left-0  w-full  z-[999] text-black ${showMenu ? 'h-screen' : 'h-0'} overflow-hidden `}>
                 <div className={`bg-menu-drawer fixed flex w-full bg-white h-screen ${showMenu ? 'menu-open' : 'menu-closed'} z-40`}></div>
                 <button className='hamburger cursor-pointer absolute top-20 right-20 border border-black rounded-full z-[60] hover:rotate-180 duration-500 p-2' onClick={handleMenu}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m8 8l32 32M8 40L40 8" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path fill="#1B1919" stroke="#1B1919" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m8 8l32 32M8 40L40 8" /></svg>
                 </button>
                 <div className='relative z-50 py-40 px-20'>
                     <ul className=''>
