@@ -5,6 +5,7 @@
     --font-body: "Mulish", "sans-serif";
     --color-title: #FFF;
     --color-body: #FFF;
+    --color-dark : #1B1919;
   }
 @layer base{
     h1,h2,h3,h4,h5,h6{
@@ -40,6 +41,28 @@
     .opening-header-title{
         @apply text-[120px] font-bold font-title;
     }
+    header{
+        transition: all 500ms ease;
+    }
+    header.scrolled-down{
+        @apply -top-[200px];
+    }
+    header.scrolled{
+        @apply bg-dark
+    }
+    .recent-project-description{
+        @apply text-[var(--color-dark)];
+    }
+    .recent-project-title{
+        @apply text-7xl font-semibold
+    }
+    .recent-project-item figure{
+        @apply shadow-md
+    }
+    .strokeme {
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgb(147, 123, 203);
+      }
 }
 .bg-menu-drawer {
     @apply transform transition-transform duration-500; 
@@ -54,3 +77,4 @@
     @apply scale-y-100;
     transform-origin: bottom center; 
 }
+
