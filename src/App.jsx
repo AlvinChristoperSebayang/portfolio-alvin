@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './styles/App.css'
-import Header from './components/organisms/header'
+import Header from './components/organisms/Header'
 
 function App() {
   useEffect(() => {
