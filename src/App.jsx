@@ -1,28 +1,77 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useRef } from 'react'
 import './styles/App.css'
 import Header from './components/organisms/Header'
+import { gsap } from "gsap";
+import SplitType from 'split-type';
+
 
 function App() {
+  const titleRef1 = useRef(null);
+  const titleRef2 = useRef(null);
+  const animateText = (element) => {
+    if (element) {
+
+      const spans = element.querySelectorAll('span');
+      spans.forEach(item =>{
+        gsap.fromTo(item, {
+          duration: 0.5,
+          opacity: 0,
+          y: 100,
+          ease: "power2.out",
+        },{
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+        },'<.02');
+      })
+    }
+  };
+  
+  const splitText = (element) => {
+    if (element) {
+      const text = element.innerText; 
+      element.innerHTML = ''; 
+
+      text.split('').forEach(char => {
+        const span = document.createElement('span');
+        span.innerText = char === ' ' ? '\u00A0' : char;
+        element.appendChild(span);
+      });
+    }
+  };
   useEffect(() => {
+    splitText(titleRef1.current);
+    animateText(titleRef1.current);
+    splitText(titleRef2.current);
+    animateText(titleRef2.current);
+    gsap.fromTo('.custom-paraAnimate', {
+      duration: 0.5,
+      opacity: 0,
+      y: 100,
 
-
-  }, [])
-
+      ease: "power2.out",
+    },{
+      opacity:1,
+      y:0,
+    },'>.5') 
+  }, []);
   return (
     <>
       <Header />
-      <section className='bg-[#1B1919]  py-32 relative hero-section'>
-        <div className='container mx-auto w-full h-full  '>
+      <section className='bg-[#1B1919] py-32 relative hero-section'>
+        <div className='container mx-auto w-full h-full'>
           <div className='flex w-full h-full relative z-20'>
             <div className='flex flex-col w-full'>
-              <h1 className='hero-title self-start'>Hey there! </h1>
+              <h1 ref={titleRef1} className='hero-title self-start'>Hey there!</h1>
               <div className='flex lg:gap-10 gap-4 self-end'>
-                <svg className=' spin-ornament' width={200} height={200} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32"><path fill="#ff9a0b" d="m16 0 1.603 8.457 4.905-7.074-1.975 8.378 7.357-4.467-5.211 6.85 8.538-1.088-7.547 4.138 8.242 2.478-8.578.711L29.856 24l-8.125-2.84 3.674 7.784-6.268-5.899.19 8.605L16 23.712l-3.327 7.938.19-8.605-6.268 5.9 3.674-7.785L2.144 24l6.521-5.617-8.577-.71 8.242-2.48-7.547-4.137 8.538 1.088-5.211-6.85 7.357 4.467-1.975-8.378 4.905 7.074L16 0Z"></path></svg>
-                <h2 className='hero-title self-end'>I'm Alvin Christoper</h2>
+                <svg className='spin-ornament' width={200} height={200} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+                  <path fill="#ff9a0b" d="m16 0 1.603 8.457 4.905-7.074-1.975 8.378 7.357-4.467-5.211 6.85 8.538-1.088-7.547 4.138 8.242 2.478-8.578.711L29.856 24l-8.125-2.84 3.674 7.784-6.268-5.899.19 8.605L16 23.712l-3.327 7.938.19-8.605-6.268 5.9 3.674-7.785L2.144 24l6.521-5.617-8.577-.71 8.242-2.48-7.547-4.137 8.538 1.088-5.211-6.85 7.357 4.467-1.975-8.378 4.905 7.074L16 0Z"></path>
+                </svg>
+                <h2 ref={titleRef2} className='hero-title self-end'>I'm Alvin Christoper</h2>
               </div>
-              <p className='max-w-[500px] lg:mt-20 mt-10 xl:text-2xl text-lg self-end'>My mission is to transform complex ideas into elegant web solutions that reflect my passion for creativity and innovation. I strive to create digital experiences that resonate with users, showcasing my commitment to quality and attention to detail in every project I undertake.</p>
-
-
+              <p className='max-w-[500px] lg:mt-20 mt-10 xl:text-2xl text-lg self-end custom-paraAnimate'>
+                My mission is to transform complex ideas into elegant web solutions that reflect my passion for creativity and innovation. I strive to create digital experiences that resonate with users, showcasing my commitment to quality and attention to detail in every project I undertake.
+              </p>
             </div>
           </div>
         </div>
@@ -31,29 +80,31 @@ function App() {
         <svg className=' spin-ornament' width={200} height={200} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32"><path fill="#ff9a0b " d="m16 0 1.603 8.457 4.905-7.074-1.975 8.378 7.357-4.467-5.211 6.85 8.538-1.088-7.547 4.138 8.242 2.478-8.578.711L29.856 24l-8.125-2.84 3.674 7.784-6.268-5.899.19 8.605L16 23.712l-3.327 7.938.19-8.605-6.268 5.9 3.674-7.785L2.144 24l6.521-5.617-8.577-.71 8.242-2.48-7.547-4.137 8.538 1.088-5.211-6.85 7.357 4.467-1.975-8.378 4.905 7.074L16 0Z"></path></svg>
       </div> */}
 
-      <section className='relative py-20 bg-[#ECF1F0]' id='about'>
-        <div className='image-parallax w-full h-full'>
-          <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[10]'>
-            <img className='w-full h-screen object-cover ' src="/image-1.jpg" alt="Image 1 Parallax" />
+      <section className='bg-[#ECF1F0]' id='about'>
+        <div className='image-parallax h-screen relative overflow-hidden'>
+          <div className='bg-black opacity-20 absolute top-0 left-0 w-screen h-screen z-20'></div>
+          <div className='w-screen h-screen flex justify-center items-center'>
+            <figure className='image-parallax absolute bottom-0 h-screen overflow-hidden duration-500 w-screen z-10'>
+              <img className='w-screen h-screen object-cover ' src="/image-1.jpg" alt="Image 1 Parallax" />
+            </figure>
+            <h3 className='opening-header-title opening-left show relative z-30'>
+              Building
+            </h3>
+          </div>
+          <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-screen z-[11]'>
+            <img className='w-screen h-screen object-cover ' src="/image-2.jpg" alt="Image 2 Parallax" />
           </figure>
-          {/* <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[11]'>
-              <img className='w-full h-screen object-cover ' src="/image-2.jpg" alt="Image 2 Parallax" />
-            </figure> */}
           {/* <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[12]'>
               <img className='w-full h-screen object-cover ' src="/image-3.jpg" alt="Image 3 Parallax" />
-            </figure> */}
-          {/* <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[13]'>
+            </figure>
+          <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[13]'>
               <img className='w-full h-screen object-cover ' src="/image-4.jpg" alt="Image 4 Parallax" />
             </figure>
             <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[14]'>
               <img className='w-full h-screen object-cover ' src="/image-5.jpg" alt="Image 5 Parallax" />
             </figure> */}
-        </div>
-        <div className='container mx-auto py-20'>
-          <ul className='opening-header flex flex-col items-center'>
-            <li className='opening-header-title opening-left'>
-              Building
-            </li>
+          <ul className='opening-header flex flex-col items-center z-30 relative'>
+          
             <li className='opening-header-title opening-right'>
               Unique
             </li>
@@ -67,6 +118,9 @@ function App() {
               Lasting Impact!
             </li>
           </ul>
+        </div>
+        <div className='container mx-auto py-20'>
+
           <div className='flex items-center justify-between lg:flex-row flex-col max-lg:gap-10'>
             <div className='image-profile lg:w-[40%] relative'>
               <figure className='relative z-20 -scale-x-100 bg-[#ff9a0b] rounded-2xl shadow-2xl'>

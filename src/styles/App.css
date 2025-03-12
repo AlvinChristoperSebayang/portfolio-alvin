@@ -45,7 +45,11 @@
         animation: spin 9s linear infinite;
     }
     .opening-header-title{
-        @apply xl:text-[120px] md:text-[80px] text-[60px] font-bold font-title text-center;
+        @apply xl:text-[120px] md:text-[80px] text-[60px] font-bold font-title text-center text-white opacity-0 invisible;
+        transition: visibility 0ms ease, opacity 500ms ease;  
+    }
+    .opening-header-title.show{
+        @apply opacity-100 visible;
     }
     header{
         transition: all 500ms ease;
@@ -74,6 +78,9 @@
     }
     .hero-section svg{
         @apply max-lg:w-[50px] max-lg:h-[50px]
+    }
+    .hero-title span{
+        @apply !inline-block opacity-0
     }
     
 }
