@@ -213,7 +213,7 @@ function App() {
         </div>
         <ul className='recent-project-wrapper mt-20 relative flex flex-col lg:gap-20 gap-12 max-sm:px-10'>
           <li className='recent-project-item '>
-            <a href="" className='gap-4 flex items-end lg:flex-row flex-col  '>
+            <a href="https://mangcoding.com/" className='gap-4 flex items-end lg:flex-row flex-col  '>
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/mangcoding.jpg" alt="Mangcoding" />
               </figure>
@@ -227,7 +227,7 @@ function App() {
             </a>
           </li>
           <li className='recent-project-item '>
-            <a href="" className='gap-4 flex lg:flex-row-reverse flex-col items-end'>
+            <a href="https://orely.co/" className='gap-4 flex lg:flex-row-reverse flex-col items-end'>
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/orely-co.jpg" alt="Orely" />
               </figure>
@@ -241,7 +241,7 @@ function App() {
             </a>
           </li>
           <li className='recent-project-item flex  '>
-            <a href="" className='gap-4 flex items-end lg:flex-row flex-col'>
+            <a href="https://dandx.com/" className='gap-4 flex items-end lg:flex-row flex-col'>
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/dandx.png" alt="Orely" />
               </figure>
@@ -255,7 +255,7 @@ function App() {
             </a>
           </li>
           <li className='recent-project-item'>
-            <a href="" className=' gap-4 flex lg:flex-row-reverse items-end flex-col'>
+            <a href="https://tabletopusa.com/" className=' gap-4 flex lg:flex-row-reverse items-end flex-col'>
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/tabletop.png" alt="TabletopHome" />
               </figure>
@@ -269,7 +269,7 @@ function App() {
             </a>
           </li>
           <li className='recent-project-item flex  '>
-            <a href="" className='gap-4 flex items-end lg:flex-row flex-col'>
+            <a href="https://bearsscrubs.com/" className='gap-4 flex items-end lg:flex-row flex-col'>
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/bearscrubs.png" alt="Bearscrubs" />
               </figure>
