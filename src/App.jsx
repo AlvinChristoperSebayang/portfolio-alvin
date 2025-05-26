@@ -121,10 +121,11 @@ function App() {
         scrollTrigger: {
           trigger: item,
           start: "top center",
-          once: true,  // Animasi hanya dijalankan sekali
+          once: true,  // Animasi hanya dijalankan sekali per elemen
         }
       });
 
+      // Animasi judul: dari opacity 0 dan posisi y 100 ke opacity 1 dan y 0
       tl.fromTo(titleProject, {
         opacity: 0,
         y: 100
@@ -133,6 +134,7 @@ function App() {
         y: 0
       });
 
+      // Animasi gambar: scale dari 1.1 ke 1, opacity dari 0 ke 1, dengan overlap 0.2 detik
       tl.fromTo(imgProject, {
         scale: 1.1,
         duration: 0.3,
@@ -143,6 +145,7 @@ function App() {
         opacity: 1
       }, '<0.2');
     });
+
   }, []);
 
   return (
@@ -327,7 +330,7 @@ function App() {
                           <radialGradient id="paint1_radial_154_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-6.70016 2.88141) rotate(78.681) scale(17.7206 73.045)">
                             <stop stop-color="#3771C8" />
                             <stop offset="0.128" stop-color="#3771C8" />
-                            <stop offset="1" stop-color="#6600FF" stop-opacity="0" />
+                            <stop offset="1" stop-color="#6600FF" stopOpacity="0" />
                           </radialGradient>
                           <clipPath id="clip0_154_8">
                             <rect width="40" height="40" fill="white" />
