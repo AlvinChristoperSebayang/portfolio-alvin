@@ -313,7 +313,7 @@ function App() {
                 <p className='text-white lg:text-3xl text-xl'>Follow Me:</p>
                 <ul className='flex mt-2 w-10'>
                   <li className='mr-5'>
-                    <a href="">
+                    <a href="https://www.instagram.com/alvincs_/">
                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_154_8)">
                           <path d="M30.625 0H9.375C4.19733 0 0 4.19733 0 9.375V30.625C0 35.8027 4.19733 40 9.375 40H30.625C35.8027 40 40 35.8027 40 30.625V9.375C40 4.19733 35.8027 0 30.625 0Z" fill="url(#paint0_radial_154_8)" />
@@ -341,7 +341,7 @@ function App() {
                     </a>
                   </li>
                   <li className='mr-5 w-10'>
-                    <a href='https://twitter.com' className='w-10' target='_blank' rel='noopener noreferrer'>
+                    <a href='https://www.linkedin.com/in/alvinchrist/' className='w-10' target='_blank' rel='noopener noreferrer'>
                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_154_13)">
                           <path d="M30.625 0H9.375C4.19733 0 0 4.19733 0 9.375V30.625C0 35.8027 4.19733 40 9.375 40H30.625C35.8027 40 40 35.8027 40 30.625V9.375C40 4.19733 35.8027 0 30.625 0Z" fill="white" />
@@ -357,7 +357,7 @@ function App() {
                     </a>
                   </li>
                   <li className='mr-5'>
-                    <a href='https://instagram.com' target='_blank' rel='noopener noreferrer'>
+                    <a href='mailto:home.alvinchrist@gmail.com' target='_blank' rel='noopener noreferrer'>
                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_154_18)">
                           <path d="M30.625 0H9.375C4.19733 0 0 4.19733 0 9.375V30.625C0 35.8027 4.19733 40 9.375 40H30.625C35.8027 40 40 35.8027 40 30.625V9.375C40 4.19733 35.8027 0 30.625 0Z" fill="#F4F2ED" />
