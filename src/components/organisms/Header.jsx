@@ -72,7 +72,7 @@ const header = () => {
                             <a href="#contact" onClick={handleMenu} className='lg:text-[120px] text-[60px] font-bold'>Contact</a>
                         </li>
                     </ul>
-                    <div className='absolute bottom-10 right-10 z-[9999]'>
+                    <div className='absolute lg:bottom-10 lg:right-10 bottom-5 right-5 z-[9999]'>
                         <svg className=' spin-ornament' width={100} height={100} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32"><path fill="WHITE" d="m16 0 1.603 8.457 4.905-7.074-1.975 8.378 7.357-4.467-5.211 6.85 8.538-1.088-7.547 4.138 8.242 2.478-8.578.711L29.856 24l-8.125-2.84 3.674 7.784-6.268-5.899.19 8.605L16 23.712l-3.327 7.938.19-8.605-6.268 5.9 3.674-7.785L2.144 24l6.521-5.617-8.577-.71 8.242-2.48-7.547-4.137 8.538 1.088-5.211-6.85 7.357 4.467-1.975-8.378 4.905 7.074L16 0Z"></path></svg>
                     </div>
                 </div>

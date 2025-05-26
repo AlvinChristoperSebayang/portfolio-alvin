@@ -1,36 +1,36 @@
-import { useState, useEffect,useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './styles/App.css'
 import Header from './components/organisms/Header'
 import { gsap } from "gsap";
-import SplitType from 'split-type';
 
-
+import { Input } from "@/components/ui/input"
+import ParallaxScroll from './components/organisms/Discover-Section';
 function App() {
   const titleRef1 = useRef(null);
   const titleRef2 = useRef(null);
-  const animateText = (element) => {
+  const [isPopup, setisPopup] = useState(false); const animateText = (element) => {
     if (element) {
 
       const spans = element.querySelectorAll('span');
-      spans.forEach(item =>{
+      spans.forEach(item => {
         gsap.fromTo(item, {
           duration: 0.5,
           opacity: 0,
           y: 100,
           ease: "power2.out",
-        },{
+        }, {
           opacity: 1,
           y: 0,
           ease: "power2.out",
-        },'<.02');
+        }, '<.02');
       })
     }
   };
-  
+
   const splitText = (element) => {
     if (element) {
-      const text = element.innerText; 
-      element.innerHTML = ''; 
+      const text = element.innerText;
+      element.innerHTML = '';
 
       text.split('').forEach(char => {
         const span = document.createElement('span');
@@ -50,14 +50,115 @@ function App() {
       y: 100,
 
       ease: "power2.out",
-    },{
-      opacity:1,
-      y:0,
-    },'>.5') 
+    }, {
+      opacity: 1,
+      y: 0,
+    }, '>.5')
   }, []);
+
+
+  const handleContact = () => {
+    setisPopup(!isPopup);
+  }
+  const handleScrollDiscover = () => {
+    const sections = document.querySelectorAll(".discover-section");
+    sections.forEach((section, index) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          toggleActions: "restart pause reset",
+          onEnter: () => section.classList.add("showing"),
+          onLeave: () => section.classList.remove("showing"),
+          onEnterBack: () => section.classList.add("showing"),
+          onLeaveBack: () => section.classList.remove("showing"),
+        },
+      });
+      tl.to(section, {
+        yPercent: -100,
+        ease: "none",
+        duration: 1,
+      });
+    });
+  }
+  // const sections = document.querySelectorAll(".discover-section");
+  useEffect(() => {
+    // const discoverSection = document.querySelectorAll(".discover-section");
+    // discoverSection.forEach((section, index) => {
+    //   if (index < discoverSection.length - 1) {
+    //     const nextSection = discoverSection[index + 1];
+
+    //     // Create timeline for this section
+    //     const tl = gsap.timeline({
+    //       scrollTrigger: {
+    //         trigger: '.discover-container',
+    //         start: `top+=${500 * (index + 1)} top`,
+    //         end: `top+=${500 * (index + 2)} top`,
+    //         scrub: true,
+    //         onEnter: () => {
+    //           // Show next section, hide current
+    //           gsap.to(section, { height: 0, overflow: 'hidden', className: '-=showing' });
+    //           gsap.to(nextSection, { height: '100vh', overflow: 'visible', className: '+=showing' });
+    //         },
+    //         onLeaveBack: () => {
+    //           // Show current section, hide next
+    //           gsap.to(section, { height: '100vh', overflow: 'visible', className: '+=showing' });
+    //           gsap.to(nextSection, { height: 0, overflow: 'hidden', className: '-=showing' });
+    //         }
+    //       }
+    //     });
+    //   }
+    // });
+    const projectItems = document.querySelectorAll(".recent-project-item");
+
+    projectItems.forEach((item) => {
+      const titleProject = item.querySelector('.recent-project-title');
+      const imgProject = item.querySelector('img');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: item,
+          start: "top center",
+          once: true,  // Animasi hanya dijalankan sekali
+        }
+      });
+
+      tl.fromTo(titleProject, {
+        opacity: 0,
+        y: 100
+      }, {
+        opacity: 1,
+        y: 0
+      });
+
+      tl.fromTo(imgProject, {
+        scale: 1.1,
+        duration: 0.3,
+        opacity: 0
+      }, {
+        scale: 1,
+        ease: "power2.out",
+        opacity: 1
+      }, '<0.2');
+    });
+  }, []);
+
   return (
     <>
       <Header />
+      <div className={`popup_wrapper fixed top-0 w-screen h-screen left-0 invisible flex justify-center items-center z-[99999999999] ${isPopup ? 'popup-open' : ''}`}>
+        <div className='overlay-popup w-full h-full opacity-0 bg-black/40 absolute top-0 left-0 z-10 duration-500'></div>
+        <div className='popup-content opacity-0 -translate-y-[100px] rounded-2xl bg-white relative z-20 duration-500'>
+          <form action="" className='w-full lg:w-[600px] lg:h-[600px] h-[400px] flex flex-col items-center justify-start p-6'>
+            <div>
+              <h2 className='text-3xl'>Contact Alvin Christ</h2>
+            </div>
+            <Input placeholder='Enter your email address' className='mt-6' />
+          </form>
+        </div>
+      </div>
       <section className='bg-[#1B1919] py-32 relative hero-section'>
         <div className='container mx-auto w-full h-full'>
           <div className='flex w-full h-full relative z-20'>
@@ -80,45 +181,8 @@ function App() {
         <svg className=' spin-ornament' width={200} height={200} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32"><path fill="#ff9a0b " d="m16 0 1.603 8.457 4.905-7.074-1.975 8.378 7.357-4.467-5.211 6.85 8.538-1.088-7.547 4.138 8.242 2.478-8.578.711L29.856 24l-8.125-2.84 3.674 7.784-6.268-5.899.19 8.605L16 23.712l-3.327 7.938.19-8.605-6.268 5.9 3.674-7.785L2.144 24l6.521-5.617-8.577-.71 8.242-2.48-7.547-4.137 8.538 1.088-5.211-6.85 7.357 4.467-1.975-8.378 4.905 7.074L16 0Z"></path></svg>
       </div> */}
 
-      <section className='bg-[#ECF1F0]' id='about'>
-        <div className='image-parallax h-screen relative overflow-hidden'>
-          <div className='bg-black opacity-20 absolute top-0 left-0 w-screen h-screen z-20'></div>
-          <div className='w-screen h-screen flex justify-center items-center'>
-            <figure className='image-parallax absolute bottom-0 h-screen overflow-hidden duration-500 w-screen z-10'>
-              <img className='w-screen h-screen object-cover ' src="/image-1.jpg" alt="Image 1 Parallax" />
-            </figure>
-            <h3 className='opening-header-title opening-left show relative z-30'>
-              Building
-            </h3>
-          </div>
-          <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-screen z-[11]'>
-            <img className='w-screen h-screen object-cover ' src="/image-2.jpg" alt="Image 2 Parallax" />
-          </figure>
-          {/* <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[12]'>
-              <img className='w-full h-screen object-cover ' src="/image-3.jpg" alt="Image 3 Parallax" />
-            </figure>
-          <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[13]'>
-              <img className='w-full h-screen object-cover ' src="/image-4.jpg" alt="Image 4 Parallax" />
-            </figure>
-            <figure className='image-parallax absolute top-0 h-screen  scale-y-0 overflow-hidden duration-500  w-full z-[14]'>
-              <img className='w-full h-screen object-cover ' src="/image-5.jpg" alt="Image 5 Parallax" />
-            </figure> */}
-          <ul className='opening-header flex flex-col items-center z-30 relative'>
-          
-            <li className='opening-header-title opening-right'>
-              Unique
-            </li>
-            <li className='opening-header-title opening-left'>
-              Digital Experiences
-            </li>
-            <li className='opening-header-title opening-right'>
-              That Make a
-            </li>
-            <li className='opening-header-title opening-left'>
-              Lasting Impact!
-            </li>
-          </ul>
-        </div>
+      <section className='bg-[#ECF1F0] ' id='about'>
+        {/* <ParallaxScroll />  */}
         <div className='container mx-auto py-20'>
 
           <div className='flex items-center justify-between lg:flex-row flex-col max-lg:gap-10'>
@@ -150,8 +214,8 @@ function App() {
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/mangcoding.jpg" alt="Mangcoding" />
               </figure>
-              <div className='flex flex-col gap-1'>
-                <span className='recent-project-status text-2xl font-semibold'>Development</span>
+              <div className='flex flex-col gap-1 max-md:items-end'>
+                <span className='recent-project-status text-2xl font-semibold'>Wordpress Development</span>
                 <span className='recent-project-description text-dark'>2024</span>
               </div>
               <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
@@ -164,8 +228,8 @@ function App() {
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/orely-co.jpg" alt="Orely" />
               </figure>
-              <div className='flex flex-col gap-1 justify-end text-right '>
-                <span className='recent-project-status text-2xl font-semibold'>Development</span>
+              <div className='flex flex-col gap-1 max-md:items-end justify-end text-right '>
+                <span className='recent-project-status text-2xl font-semibold'>Wordpress Development</span>
                 <span className='recent-project-description text-dark'>2023</span>
               </div>
               <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
@@ -178,8 +242,8 @@ function App() {
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/dandx.png" alt="Orely" />
               </figure>
-              <div className='flex flex-col gap-1'>
-                <span className='recent-project-status text-2xl font-semibold'>Development</span>
+              <div className='flex flex-col gap-1 max-md:items-end'>
+                <span className='recent-project-status text-2xl font-semibold'> Shopify Development</span>
                 <span className='recent-project-description text-dark'>2024</span>
               </div>
               <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
@@ -192,12 +256,26 @@ function App() {
               <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
                 <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/tabletop.png" alt="TabletopHome" />
               </figure>
-              <div className='flex flex-col gap-1 justify-end text-right '>
-                <span className='recent-project-status text-2xl font-semibold'>Development</span>
+              <div className='flex flex-col gap-1 max-md:items-end justify-end text-right '>
+                <span className='recent-project-status text-2xl font-semibold'>Shopify Development</span>
                 <span className='recent-project-description text-dark'>2023</span>
               </div>
               <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
                 <h3 className='recent-project-title'>TabletopHome</h3>
+              </div>
+            </a>
+          </li>
+          <li className='recent-project-item flex  '>
+            <a href="" className='gap-4 flex items-end lg:flex-row flex-col'>
+              <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
+                <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/bearscrubs.png" alt="Bearscrubs" />
+              </figure>
+              <div className='flex flex-col gap-1 max-md:items-end'>
+                <span className='recent-project-status text-2xl font-semibold'> Shopify Development</span>
+                <span className='recent-project-description text-dark'>2024</span>
+              </div>
+              <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
+                <h3 className='recent-project-title'>Bearscrubs</h3>
               </div>
             </a>
           </li>
@@ -218,12 +296,12 @@ function App() {
           </div>
           <div className='w-full md:w-1/2 flex flex-col lg:items-end items-start justify-between'>
             <nav className='mb-10 md:mb-0'>
-              <ul className='text-white flex flex-col lg:items-end items-start gap-2'>
-                <li>
-                  <a href="#say-hello" className='lg:text-6xl text-xl'>Say Hello</a>
+              <ul className='text-white flex flex-col lg:items-end items-start gap-2  cursor-pointer'>
+                <li className='flex flex-col items-start gap-4'>
+                  <button className='lg:text-6xl text-xl cursor-pointer'>Say Hello</button>
+                  <button className='lg:text-4xl text-lg cursor-pointer'>Contact Me</button>
                 </li>
                 <li>
-                  <a href="#contact" className='lg:text-4xl text-lg'>Contact Me</a>
                 </li>
               </ul>
             </nav>
