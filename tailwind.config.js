@@ -8,9 +8,12 @@ module.exports = {
       colors: {
         dark: '#1B1919',
         orange: '#f7a026',
+        primary: '#f7a026'
       },
       textColor: {
         dark: '#1B1919',
+         orange: '#f7a026',
+        primary: '#f7a026'
       },
       container: {
         center: true, 

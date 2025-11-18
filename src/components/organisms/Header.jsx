@@ -38,7 +38,7 @@ const header = () => {
                 <nav className='flex justify-between items-center h-16 bg-transparent text-black py-10 container mx-auto ' role='navigation'>
                     <ul>
                         <li>
-                            <a href="" className=''>Alvin Christ</a>
+                            <a href="/" className=''>Alvin Christ</a>
                         </li>
                     </ul>
                     <ul>
