@@ -2,12 +2,52 @@ import { useState, useEffect, useRef } from 'react'
 import '../styles/App.css'
 import Header from '../components/organisms/Header'
 import Footer from '../components/organisms/Footer';
+import Lenis from '@studio-freight/lenis';
 import { gsap } from "gsap";
 
 import { Input } from "@/components/ui/input"
 import ParallaxScroll from '../components/organisms/Discover-Section';
 import Marquee from "react-fast-marquee";
 function Home() {
+   const lenis = useRef(null);
+
+useEffect(() => {
+  // Initialize Lenis
+  lenis.current = new Lenis({
+    // Duration: Semakin tinggi nilai ini, semakin lama "seluncuran" scrollnya. 
+    // 1.2 adalah sweet spot agar terasa halus tapi tidak "telat" (laggy).
+    duration: 1.2, 
+    
+    // Easing: Menggunakan 'easeOutExpo'. 
+    // Ini adalah fungsi matematika standar untuk scroll yang terasa "mahal" dan ringan.
+    // Dia akan mulai cepat lalu melambat dengan sangat halus di akhir.
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+
+    direction: 'vertical', 
+    gestureDirection: 'vertical',
+    smooth: true,
+    
+    // Mouse Multiplier: Naikkan ini agar scroll terasa lebih ENTENG.
+    // 0.8 (kode lama anda) itu berat. 1 adalah standar. 1.2 - 1.5 sangat ringan.
+    mouseMultiplier: 1, 
+    
+    // Touch: Agar di HP tidak terasa "seret"
+    smoothTouch: true,
+    touchMultiplier: 2, 
+  });
+
+  // Request animation frame for continuous updates
+  const animate = (time) => {
+    lenis.current.raf(time);
+    requestAnimationFrame(animate);
+  };
+  requestAnimationFrame(animate);
+
+  // Cleanup
+  return () => {
+    lenis.current.destroy();
+  };
+}, []);
   const titleRef1 = useRef(null);
   const titleRef2 = useRef(null);
   const [isPopup, setisPopup] = useState(false); const animateText = (element) => {
@@ -321,9 +361,38 @@ function Home() {
                 </div>
               </a>
             </li>
-            <li className='mx-auto w-fit relative group-[]:'>
-              <a className={`text-4xl font-semibold before:content-[' '] before:absolute before:w-0 hover:before:w-full before:duration-300 before:h-1 before:-bottom-2 before:bg-[#ff9a0b]`} href="/projects">View All</a>
+            <li className='recent-project-item flex  '>
+              <a href="https://daresayny.com" className=' gap-4 flex lg:flex-row-reverse items-end flex-col'>
+                <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
+                  <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/daresay.png" alt="Daresay" />
+                </figure>
+                <div className='flex flex-col gap-1 max-md:items-end'>
+                  <span className='recent-project-status text-2xl font-semibold'> Shopify Development</span>
+                  <span className='recent-project-description text-dark'>2024</span>
+                </div>
+                <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
+                  <h3 className='recent-project-title'>Daresay</h3>
+                </div>
+              </a>
             </li>
+             <li className='recent-project-item flex  '>
+              <a href="https://oralmedic.ca/" className='gap-4 flex items-end lg:flex-row flex-col'>
+                <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
+                  <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/bearscrubs.png" alt="Bearscrubs" />
+                </figure>
+                <div className='flex flex-col gap-1 max-md:items-end'>
+                  <span className='recent-project-status text-2xl font-semibold'> Shopify Development</span>
+                  <span className='recent-project-description text-dark'>2024</span>
+                </div>
+                <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
+                  <h3 className='recent-project-title'>OralMedic</h3>
+
+                </div>
+              </a>
+            </li>
+            {/* <li className='mx-auto w-fit relative group-[]:'>
+              <a className={`text-4xl font-semibold before:content-[' '] before:absolute before:w-0 hover:before:w-full before:duration-300 before:h-1 before:-bottom-2 before:bg-[#ff9a0b]`} href="/projects">View All</a>
+            </li> */}
           </ul>
         </div>
        
