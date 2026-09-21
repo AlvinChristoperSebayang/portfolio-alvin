@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const header = () => {
     const [showMenu, setShowMenu] = useState(false);
@@ -66,7 +67,7 @@ const header = () => {
                             <a href="#about" onClick={handleMenu} className='lg:text-[120px] text-[60px] font-bold'>About</a>
                         </li>
                         <li className={`${showMenu ? 'opacity-100 translate-0' : 'opacity-0 translate-y-[100px]'}  delay-[0.4s] duration-500 md:self-end`}>
-                            <a href="#project" onClick={handleMenu} className='lg:text-[120px] text-[60px] font-bold '>Project</a>
+                            <Link to="/portfolio" onClick={handleMenu} className='lg:text-[120px] text-[60px] font-bold '>Project</Link>
                         </li>
                         <li className={`${showMenu ? 'opacity-100 translate-0' : 'opacity-0 translate-y-[100px] '} delay-[0.5s]  duration-500`}>
                             <a href="#contact" onClick={handleMenu} className='lg:text-[120px] text-[60px] font-bold'>Contact</a>

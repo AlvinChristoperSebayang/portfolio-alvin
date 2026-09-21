@@ -190,6 +190,29 @@ useEffect(() => {
 
   }, []);
 
+  useEffect(() => {
+    const counters = document.querySelectorAll('.stat-number');
+
+    counters.forEach((counter) => {
+      const target = parseInt(counter.dataset.target, 10);
+      const counterValue = { val: 0 };
+
+      gsap.to(counterValue, {
+        val: target,
+        duration: 2,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: counter,
+          start: 'top 85%',
+          once: true,
+        },
+        onUpdate: () => {
+          counter.textContent = `${Math.floor(counterValue.val)}+`;
+        },
+      });
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -226,15 +249,15 @@ useEffect(() => {
         <div className='container mx-auto'>
           <ul className='grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-[900px] mx-auto text-center'>
             <li className='flex flex-col items-center gap-1'>
-              <span className='text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl'>11+</span>
+              <span className='stat-number text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl' data-target='11'>0+</span>
               <span className='text-white/70'>Countries Served</span>
             </li>
             <li className='flex flex-col items-center gap-1'>
-              <span className='text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl'>23+</span>
+              <span className='stat-number text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl' data-target='23'>0+</span>
               <span className='text-white/70'>Happy Clients</span>
             </li>
             <li className='flex flex-col items-center gap-1'>
-              <span className='text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl'>3+</span>
+              <span className='stat-number text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl' data-target='3'>0+</span>
               <span className='text-white/70'>Years of Experience</span>
             </li>
           </ul>
