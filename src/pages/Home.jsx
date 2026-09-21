@@ -222,6 +222,24 @@ useEffect(() => {
           </div>
         </div>
       </section>
+      <section className='bg-[#1B1919] pb-32 stats-section'>
+        <div className='container mx-auto'>
+          <ul className='grid grid-cols-1 sm:grid-cols-3 gap-10 max-w-[900px] mx-auto text-center'>
+            <li className='flex flex-col items-center gap-1'>
+              <span className='text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl'>11+</span>
+              <span className='text-white/70'>Countries Served</span>
+            </li>
+            <li className='flex flex-col items-center gap-1'>
+              <span className='text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl'>23+</span>
+              <span className='text-white/70'>Happy Clients</span>
+            </li>
+            <li className='flex flex-col items-center gap-1'>
+              <span className='text-[#ff9a0b] font-title font-bold text-5xl md:text-6xl'>3+</span>
+              <span className='text-white/70'>Years of Experience</span>
+            </li>
+          </ul>
+        </div>
+      </section>
       <section className='bg-[#ff9a0b] max-w-screen overflow-hidden' >
         <Marquee className='bg-[#ff9a0b] py-10 flex items-center gap-4 rotate-[0.5deg]'>
           <div className='flex gap-10 marquee-item'>
@@ -262,8 +280,8 @@ useEffect(() => {
 
           <div className='flex items-center justify-between lg:flex-row flex-col max-lg:gap-10'>
             <div className='image-profile lg:w-[40%] relative'>
-              <figure className='relative z-20 -scale-x-100 bg-[#ff9a0b] rounded-2xl shadow-2xl'>
-                <img className='w-full h-full object-contain' src="./alvin-christoper-sebayang.png" alt="Alvin Christoper Sebayang" />
+              <figure className='relative z-20  bg-[#ff9a0b] rounded-2xl shadow-2xl'>
+                <img className='w-full h-full object-contain' src="./alvin-hd.png" alt="Alvin Christoper Sebayang" />
               </figure>
             </div>
             <div className='max-w-[500px] flex flex-col justify-end'>
@@ -376,22 +394,22 @@ useEffect(() => {
               </a>
             </li>
              <li className='recent-project-item flex  '>
-              <a href="https://oralmedic.ca/" className='gap-4 flex items-end lg:flex-row flex-col'>
+              <a href="https://fleishboards.com/" className='gap-4 flex items-end lg:flex-row flex-col'>
                 <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
-                  <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/bearscrubs.png" alt="Bearscrubs" />
+                  <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/fleish-meath.png" alt="Fleish Meat" />
                 </figure>
                 <div className='flex flex-col gap-1 max-md:items-end'>
                   <span className='recent-project-status text-2xl font-semibold'> Shopify Development</span>
-                  <span className='recent-project-description text-dark'>2024</span>
+                  <span className='recent-project-description text-dark'>2025</span>
                 </div>
                 <div className='grow h-full self-center text-center flex items-center justify-center max-md:order-[-1]'>
-                  <h3 className='recent-project-title'>OralMedic</h3>
+                  <h3 className='recent-project-title'>Fleish Meat</h3>
 
                 </div>
               </a>
             </li>
             {/* <li className='mx-auto w-fit relative group-[]:'>
-              <a className={`text-4xl font-semibold before:content-[' '] before:absolute before:w-0 hover:before:w-full before:duration-300 before:h-1 before:-bottom-2 before:bg-[#ff9a0b]`} href="/projects">View All</a>
+              <a className={`text-4xl font-semibold before:content-[' '] before:absolute before:w-0 hover:before:w-full before:duration-300 before:h-1 before:-bottom-2 before:bg-[#ff9a0b]`} href="/portfolio">View All</a>
             </li> */}
           </ul>
         </div>
