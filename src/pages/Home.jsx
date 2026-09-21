@@ -419,7 +419,7 @@ useEffect(() => {
              <li className='recent-project-item flex  '>
               <a href="https://fleishboards.com/" className='gap-4 flex items-end lg:flex-row flex-col'>
                 <figure className='lg:w-1/2 w-full overflow-hidden group rounded-xl max-md:min-h-[190px] '>
-                  <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/fleish-meath.png" alt="Fleish Meat" />
+                  <img className='w-full group-hover:scale-[1.1] duration-500 max-md:h-[190px] object-cover' src="/fleish-meat.png" alt="Fleish Meat" />
                 </figure>
                 <div className='flex flex-col gap-1 max-md:items-end'>
                   <span className='recent-project-status text-2xl font-semibold'> Shopify Development</span>
